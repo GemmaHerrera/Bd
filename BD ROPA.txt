@@ -1,0 +1,52 @@
+DROP TABLE Usuarios
+DROP TABLE Ropa
+DROP TABLE Compra
+DROP TABLE Temporada
+CREATE TABLE Usuarios (
+                 IDUsuario INT(50)  PRIMARY KEY, 
+                 Password nvarchar(200) NOT NULL,
+                 Nombre nvarchar (50),
+                 Email nvarchar (500),
+                 Tipo nvarchar (100),
+                 Administrador BIT NOT NULL DEFAULT 0,
+)
+  CREATE TABLE Ropa (
+                IDRopa bigint NOT NULL IDENTITY (1,1) PRIMARY KEY,
+                FechaCreacion datetime NOT NULL DEFAULT getdate(),
+                Color nvarchar(100) NOT NULL,
+                Tipo nvarchar (200) NOT NULL,
+                Precio money (1000) NOT NULL UNIQUE,
+               Categoria (1,2,3,4..) nvarchar (1000) NOT NULL UNIQUE, // 
+               Talla nvarchar (500) NOT NULL,
+                IDTemp bigint NOT NULL REFERENCES Temp,
+) 
+   CREATE TABLE Temporada
+                      IDTemp bigint NOT NULL IDENTITY (1,1) PRIMARY KER,
+                      FechaCreacion datetime NOT NULL DEFAULT GETDATE(),
+                       Primavera nvarchar(100) NOT NULL //
+                       Verano nvarchar(100) NOT NULL //
+                       Otoño nvarchar(100) NUT NULL//
+                       Invierno nvarchar(100) NUT NULL//,
+)    
+   CREATE TABLE Categoria
+                IDCateg bigint NOT NULL IDENTITY (1,1) PRIMARY KEY,
+                FechaCreacion datatime NOT NULL DEFAULT GETDATE ()
+                Blusa nvarchar(100) NOT NULL//
+                Jeans nvarchar(100) NOT NULL//
+                Shorts nvarchar(100) NOT NULL//
+                Chaqueta nvarchar(100) NOT NULL//
+                Zapatos nvarchar(100) NOT NULL 
+
+
+
+
+
+
+
+
+
+) 
+   CREATE TABLE Compra
+                    IDUsuario bigint NOT NULL REFERENCES Usuario,
+                    IDRopa bigint NOT NULL REFERENCES Ropa,
+)
